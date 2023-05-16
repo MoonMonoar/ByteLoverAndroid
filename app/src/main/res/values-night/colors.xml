@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Night -->
+    <color name="main">#FF7F27</color>
+    <color name="secondary">#83593b</color>
+    <color name="lite">#2d1c11</color>
+    <color name="white">#212121</color>
+    <color name="black">#f1f1f1</color>
+    <color name="border_grey">#292929</color>
+    <color name="dark">#dc6617</color>
+    <color name="card_color">#3a3a3a</color>
+    <color name="text_dark">#f1f1f1</color>
+    <color name="grey_back">#2b2b2b</color>
+    <color name="grey_text">#a1a1a1</color>
+    <color name="alert">#ff5555</color>
+    <color name="light_grey">#5c5c5c</color>
+    <color name="very_light_grey">#595959</color>
+    <color name="ok_green">#1bd41b</color>
+    <color name="footer_back">#2b2b2b</color>
+    <color name="ok_green_dark">#0aa60a</color>
+    <color name="grad3">#141e2f</color>
+    <color name="card_back">#3a3a3a</color>
+    <color name="ans_wrong">#804141</color>
+    <color name="brand">#4C4C4C</color>
+    <color name="status_bar">#121212</color>
+    <color name="card_grad1">#442C1C</color>
+    <color name="card_grad2">#333943</color>
+</resources>

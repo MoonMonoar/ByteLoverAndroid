@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "228849322669",
+    "project_id": "bytelover-android",
+    "storage_bucket": "bytelover-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228849322669:android:1ac9565d024a5d494dd424",
+        "android_client_info": {
+          "package_name": "com.immo2n.bytelover"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228849322669-6uiu7341qc3qt6kqo2jncrqtbjf3i2ob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi3u8GGjU4qVU6XpxrqDXsOjBrfH5Ffk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228849322669-6uiu7341qc3qt6kqo2jncrqtbjf3i2ob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

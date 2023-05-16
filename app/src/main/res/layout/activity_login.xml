@@ -1,0 +1,171 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LoginBody"
+    tools:context=".Login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_lite">
+
+    <LinearLayout
+        android:id="@+id/login_body"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:minWidth="370dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"
+            android:id="@+id/banner"
+            android:src="@drawable/banner"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:contentDescription="@string/banner" />
+
+        <TextView
+            android:textColor="@color/main"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:fontFamily="@font/ubuntu"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/login_message"
+            android:text="@string/welcome_to_byte_lover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+        <EditText
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:fontFamily="@font/ubuntu"
+            android:background="@drawable/border"
+            android:id="@+id/user_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:hint="@string/phone_or_email"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColorHint="@color/main"
+            android:textSize="16sp"
+            android:autofillHints="Username or Email"/>
+
+        <EditText
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/baseline_password_24"
+            android:fontFamily="@font/ubuntu"
+            android:background="@drawable/border"
+            android:id="@+id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColorHint="@color/main"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:textColor="@color/main"
+            android:fontFamily="@font/ubuntu"
+            android:id="@+id/pass_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_password"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:minWidth="250dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="@font/ubuntu"
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:text="@string/log_in"
+            android:textSize="16sp" />
+
+        <TextView
+            android:textSize="16sp"
+            android:id="@+id/button_signup"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/main"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account"
+            android:fontFamily="@font/ubuntu"/>
+
+        <View
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:background="@color/grey_text" />
+
+        <TextView
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:ellipsize="middle"
+            android:padding="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="14sp"
+            android:fontFamily="@font/ubuntu"
+            android:text="@string/recover_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:fontFamily="@font/ubuntu"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                android:id="@+id/terms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="@string/terms_or_service"
+                android:textAlignment="textEnd"
+                android:textSize="13sp" />
+            <TextView
+                android:textSize="28sp"
+                android:gravity="center"
+                android:text="@string/mid_dot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
+            <TextView
+                android:singleLine="true"
+                android:ellipsize="middle"
+                android:id="@+id/policy"
+                android:padding="10dp"
+                android:textSize="13sp"
+                android:fontFamily="@font/ubuntu"
+                android:text="@string/privacy_policy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

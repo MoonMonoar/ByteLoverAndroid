@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Extra -->
+    <color name="transparent">#00000000</color>
+    <color name="white_robust">#ffffff</color>
+    <color name="main_robust">#FF7F27</color>
+
+    <!-- Light -->
+    <color name="main">#FF7F27</color>
+    <color name="secondary">#fdb17a</color>
+    <color name="lite">#fbe7d9</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="border_grey">#f1f1f1</color>
+    <color name="dark">#dc6617</color>
+    <color name="card_color">#ffe5d2</color>
+    <color name="text_dark">#d15400</color>
+    <color name="grey_back">#fcfcfc</color>
+    <color name="grey_text">#7a7a7a</color>
+    <color name="alert">#ff2626</color>
+    <color name="light_grey">#939393</color>
+    <color name="very_light_grey">#cccccc</color>
+    <color name="ok_green">#1bd41b</color>
+    <color name="footer_back">#fcfcfc</color>
+    <color name="ok_green_dark">#0aa60a</color>
+    <color name="grad3">#dbe9ff</color>
+    <color name="card_back">#eeeff3</color>
+    <color name="ans_wrong">#ffb9b9</color>
+    <color name="brand">#CACACA</color>
+    <color name="status_bar">#ffffff</color>
+    <color name="card_grad1">#F8DECD</color>
+    <color name="card_grad2">#C8DAF4</color>
+
+    <color name="course_features_two">#ff735d</color>
+    <color name="course_features_four">#45945C</color>
+    <color name="course_features_three">#5c408f</color>
+
+    <color name="feature_card_two">#8067AF</color>
+    <color name="feature_card_three">#D8897D</color>
+    <color name="feature_card_four">#637680</color>
+
+    <color name="grad_cap">#C8DAF4</color>
+</resources>

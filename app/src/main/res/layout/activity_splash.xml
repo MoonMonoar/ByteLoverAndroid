@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/SplashBody"
+    android:background="@color/white"
+    tools:context=".Splash">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="107dp"
+            android:contentDescription="@string/bannerDescription"
+            android:src="@drawable/banner" />
+
+        <RelativeLayout
+            android:layout_below="@id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="110dp">
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:scaleX="6.5"
+                android:scaleY="6.5"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loadingCup.json"
+                app:lottie_loop="true"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:textColor="@color/main"
+                android:id="@+id/no_net"
+                android:fontFamily="@font/ubuntu"
+                android:layout_marginTop="30dp"
+                android:textSize="16.5sp"
+                android:gravity="center"
+                android:layout_below="@id/loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no_internet_connection"
+                />
+            <Button
+                android:textAllCaps="false"
+                android:visibility="gone"
+                android:id="@+id/try_again"
+                android:fontFamily="@font/ubuntu"
+                android:layout_marginTop="15dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/no_net"
+                android:text="@string/try_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:textSize="13sp"
+        android:id="@+id/production"
+        android:textColor="@color/brand"
+        android:fontFamily="@font/ubuntu"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/by_producer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
