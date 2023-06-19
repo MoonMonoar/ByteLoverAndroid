@@ -1,8 +1,5 @@
 package com.immo2n.bytelover;
 
-import android.content.Context;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -12,16 +9,18 @@ import com.immo2n.bytelover.HomeTabs.CourseFragment;
 import com.immo2n.bytelover.HomeTabs.HomeFragment;
 
 public class HomeAdapter extends FragmentStateAdapter {
-    public HomeAdapter(@NonNull FragmentActivity fragmentActivity) {
+    private final Global global;
+    public HomeAdapter(@NonNull FragmentActivity fragmentActivity, Global global_obj) {
         super(fragmentActivity);
+        global = global_obj;
     }
     @NonNull
     @Override
     public Fragment createFragment(int position) {
         if(position == 0) {
-            return new HomeFragment();
+            return new HomeFragment(global);
         }
-        return new CourseFragment();
+        return new CourseFragment(global);
     }
     @Override
     public int getItemCount() {

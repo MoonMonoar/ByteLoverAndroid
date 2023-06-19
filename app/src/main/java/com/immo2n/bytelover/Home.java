@@ -45,9 +45,8 @@ public class Home extends AppCompatActivity {
 
         //Tabs
         tabs = findViewById(R.id.home_pager);
-        HomeAdapter adapter = new HomeAdapter(this);
+        HomeAdapter adapter = new HomeAdapter(this, global);
         tabs.setAdapter(adapter);
-
 
         findViewById(R.id.login_button).setOnClickListener(v-> goto_dash(this));
 

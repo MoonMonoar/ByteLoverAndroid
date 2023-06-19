@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.immo2n.bytelover.Global;
 import com.immo2n.bytelover.Home;
 import com.immo2n.bytelover.Ide;
 import com.immo2n.bytelover.R;
@@ -21,7 +21,10 @@ import com.immo2n.bytelover.Slides;
 
 public class HomeFragment extends Fragment {
     private LottieAnimationView ide_ad_animation, home_image_1, home_image_2;
-    public HomeFragment() {}
+    private Global global;
+    public HomeFragment(Global global_obj) {
+        global = global_obj;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -119,12 +119,12 @@ public class Splash extends AppCompatActivity {
             String android_latest = (String)responseObject.get("android_latest"),
                    status = (String)responseObject.get("status");
             //Risky but managed from server side
-            ArrayList<String> android_accepted = (ArrayList) responseObject.get("android_accepted");
+            ArrayList android_accepted = (ArrayList) responseObject.get("android_accepted");
             if(null != android_latest && !android_latest.equals(global.appVersion)){
                 //If accepted then process login
                 boolean accepted = false;
                 if(null != android_accepted) {
-                    for (String version : android_accepted) {
+                    for (Object version : android_accepted) {
                         if (version.equals(global.appVersion)) {
                             accepted = true;
                             break;

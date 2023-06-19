@@ -36,15 +36,13 @@ public class Error extends AppCompatActivity {
         //Try catching error
         String error = getIntent().getStringExtra("type");
         if(null != error && !error.isEmpty()){
-            switch (error){
-                case "maintenance":
-                    RelativeLayout maintenance = findViewById(R.id.maintenance);
-                    LottieAnimationView devs = findViewById(R.id.devsBusy);
-                    ue_l.setVisibility(View.GONE);
-                    ue_a.pauseAnimation();
-                    devs.playAnimation();
-                    maintenance.setVisibility(View.VISIBLE);
-                    break;
+            if("maintenance".equals(error)) {
+                RelativeLayout maintenance = findViewById(R.id.maintenance);
+                LottieAnimationView devs = findViewById(R.id.devsBusy);
+                ue_l.setVisibility(View.GONE);
+                ue_a.pauseAnimation();
+                devs.playAnimation();
+                maintenance.setVisibility(View.VISIBLE);
             }
         }
     }

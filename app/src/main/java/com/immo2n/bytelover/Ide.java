@@ -1,12 +1,8 @@
 package com.immo2n.bytelover;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -21,12 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -39,7 +36,7 @@ public class Ide extends AppCompatActivity {
     private LinearLayout error_view, loading_view;
     private LottieAnimationView morty;
     //Link set
-    private String link_c = "https://www.programiz.com/c-programming/online-compiler/",
+    private final String link_c = "https://www.programiz.com/c-programming/online-compiler/",
                     link_cpp = "https://www.programiz.com/cpp-programming/online-compiler/",
                     link_csharp = "https://www.programiz.com/csharp-programming/online-compiler/",
                     link_java = "https://www.programiz.com/java-programming/online-compiler/",
@@ -60,7 +57,6 @@ public class Ide extends AppCompatActivity {
         setContentView(R.layout.activity_ide);
         global = new Global(this);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        View body = findViewById(R.id.ide_body);
         View decor = getWindow().getDecorView();
         decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.main));
@@ -90,7 +86,8 @@ public class Ide extends AppCompatActivity {
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
-
+        webSettings.setAllowFileAccess(true);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 
         //Start with c
         link = link_c;
@@ -237,7 +234,9 @@ public class Ide extends AppCompatActivity {
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 //Ignorable error
                 if(error.getDescription().equals("net::ERR_EMPTY_RESPONSE")
-                 || error.getDescription().equals("net::ERR_SOCKET_NOT_CONNECTED")){
+                        || error.getDescription().equals("net::ERR_SOCKET_NOT_CONNECTED")
+                        || error.getDescription().equals("net::ERR_CONNECTION_REFUSED")
+                        || error.getDescription().equals("net::ERR_ERROR")) {
                     return;
                 }
                 webview.loadUrl("about:blank");
@@ -305,5 +304,14 @@ public class Ide extends AppCompatActivity {
         else {
             Objects.requireNonNull(ide_buttons.get(key)).setBackground(ContextCompat.getDrawable(this, R.color.transparent));
         }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        webview.clearCache(true);
+        webview.clearHistory();
+        webview.clearMatches();
+        webview.clearFormData();
+        webview.destroy();
     }
 }

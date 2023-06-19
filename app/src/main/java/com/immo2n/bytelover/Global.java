@@ -11,18 +11,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
@@ -50,7 +46,7 @@ import java.util.Random;
 
 public class Global {
     public final String appVersion = "BL-A-1.0.01", appDatapath;
-    public final String server = "https://api.bytelover.com",
+    public final String server = "https://api.bytelover.com/android",
                         helpline_number = "+8801317215403",
                         facebook_page_id = "118902037834228",
                         messenger_link = "https://m.me/immo2n",
@@ -88,11 +84,10 @@ public class Global {
     }
     public Map<String, Object> jsonMap(String data){
         Type type = new TypeToken<Map<String, Object>>() {}.getType();
-        Map<String, Object> jsonMap = gson.fromJson(data, type);
-        return jsonMap;
+        return gson.fromJson(data, type);
     }
     public boolean isValidLink(String link) {
-        String regex = "^(http|https)://([a-zA-Z0-9\\-.]+\\.[a-zA-Z]{2,}(\\:[0-9]+)?)(/[a-zA-Z0-9\\-._?,'\\+&%$#=~]+)*$";
+        String regex = "^(http|https)://([a-zA-Z0-9\\-.]+\\.[a-zA-Z]{2,}([0-9]+)?)(/[a-zA-Z0-9\\-._?,'&%$#=~]+)*$";
         return link.matches(regex);
     }
     public boolean writeAsfile(String data, String fileName) {
@@ -259,11 +254,15 @@ public class Global {
         d_window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         return dialog;
     }
-    public static int pixelsToDp(Context context, int pixels) {
+    public int pixelsToDp(int pixels) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float density = displayMetrics.density;
-        int dp = Math.round(pixels / density);
-        return dp;
+        return Math.round(pixels / density);
+    }
+    public int dpToPixels(int dp) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float density = displayMetrics.density;
+        return Math.round(dp * density);
     }
     public boolean newlyInstalled(){
         String install_data_file = "InstallData.txt";
@@ -309,14 +308,15 @@ public class Global {
     }
     public boolean wasDarkModeOn(){
         String data = readFromfile("DarkMode.txt");
-        if(null == data || data.equals("Yes")){
-            return true;
-        }
-        return false;
+        return null == data || data.equals("Yes");
     }
     public boolean isDarkModeOn(){
         // Check if night mode is enabled
         UiModeManager uiManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
         return uiManager.getNightMode() == UiModeManager.MODE_NIGHT_YES;
+    }
+
+    public Gson getGson() {
+        return gson;
     }
 }

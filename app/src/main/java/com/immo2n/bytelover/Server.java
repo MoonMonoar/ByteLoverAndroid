@@ -14,5 +14,11 @@ public class Server {
     public Server(Global global_object){
         this.global = global_object;
     }
+    public final String server = "https://api.bytelover.com/android";
 
+    //DATA LINKS
+    public String courses_data_link = server+"/data/courses.php";
+    public String getCourses_data_link() {
+        return courses_data_link;
+    }
 }

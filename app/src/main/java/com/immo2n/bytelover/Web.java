@@ -74,6 +74,8 @@ public class Web extends AppCompatActivity {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webView.loadUrl(link);
 
         //Events
@@ -131,6 +133,10 @@ public class Web extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        webView.clearCache(true);
+        webView.clearHistory();
+        webView.clearMatches();
+        webView.clearFormData();
         webView.destroy();
     }
 }

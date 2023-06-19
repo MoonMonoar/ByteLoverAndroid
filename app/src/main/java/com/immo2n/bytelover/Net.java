@@ -6,22 +6,25 @@ import android.os.Message;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class Net {
     private static Handler netHandler;
-    private static Global global;
+    private static WeakReference<Global> globalRef;
     public Net(Handler handler, Global global_object) {
         netHandler = handler;
-        global = global_object;
+        globalRef = new WeakReference<>(global_object);
     }
     public void get(String url) {
         httpRequest(url, "GET");
     }
+
+    //This is separated from http request method because it has to transfer payloads
     public void post(String url, String payload){
-        if(global.netConnected()){
+        if(globalRef.get().netConnected()){
             Message message = netHandler.obtainMessage();
             message.obj = "ERROR_NO_NET";
             netHandler.sendMessage(message);
@@ -36,7 +39,7 @@ public class Net {
                 con.setDoOutput(true);
                 con.setDoInput(true);
                 OutputStream os = con.getOutputStream();
-                os.write(payload.getBytes("UTF-8"));
+                os.write(payload.getBytes(StandardCharsets.UTF_8));
                 os.flush();
                 os.close();
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -59,7 +62,7 @@ public class Net {
     }
     public void data(String url, String token) {
         new Thread(() -> {
-            if(global.netConnected()){
+            if(globalRef.get().netConnected()){
                 Message message = netHandler.obtainMessage();
                 message.obj = "ERROR_NO_NET";
                 netHandler.sendMessage(message);
@@ -73,7 +76,7 @@ public class Net {
                 con.setDoOutput(true);
                 con.setDoInput(true);
                 OutputStream os = con.getOutputStream();
-                os.write(("token=" + global.makeUrlSafe(token)).getBytes(StandardCharsets.UTF_8));
+                os.write(("token=" + globalRef.get().makeUrlSafe(token)).getBytes(StandardCharsets.UTF_8));
                 os.flush();
                 os.close();
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -96,7 +99,7 @@ public class Net {
     }
     public static void httpRequest(String url, String netMethod) {
         new Thread(() -> {
-            if(global.netConnected()){
+            if(globalRef.get().netConnected()){
                 Message message = netHandler.obtainMessage();
                 message.obj = "ERROR_NO_NET";
                 netHandler.sendMessage(message);
