@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -32,13 +33,11 @@ import java.util.Map;
 public class CourseFragment extends Fragment {
     private String tab_mode = "Live";
     private RelativeLayout live_active, record_active, live_inactive, record_inactive;
-    private final Global global;
+    private Global global;
     private TableLayout course_scroll;
     private LayoutInflater main_inflater;
+    private ViewGroup main_view_group;
     private Server server;
-    public CourseFragment(Global global_obj) {
-        global = global_obj;
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +45,10 @@ public class CourseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        global = new Global(getContext());
         server = new Server(global);
         main_inflater = inflater;
+        main_view_group = container;
         // Inflate the layout for this fragment
         View course_tab =  inflater.inflate(R.layout.home_tab_course, container, false);
         course_scroll = course_tab.findViewById(R.id.course_scroll);
@@ -114,9 +115,34 @@ public class CourseFragment extends Fragment {
                         //No courses for now!
 
                     }
+                    //Cleanup
+                    course_scroll.removeAllViews();
                     for(Course course: courseList){
                         //Loop of every course
-
+                        View child = main_inflater.inflate(R.layout.course_child, main_view_group);
+                        TextView title = child.findViewById(R.id.course_title),
+                                short_des = child.findViewById(R.id.course_short_description),
+                                code = child.findViewById(R.id.course_code),
+                                level = child.findViewById(R.id.course_level),
+                                batch = child.findViewById(R.id.course_batch),
+                                slot = child.findViewById(R.id.course_slot),
+                                duration = child.findViewById(R.id.course_duration),
+                                date_start = child.findViewById(R.id.course_date_start),
+                                date_end = child.findViewById(R.id.course_date_end),
+                                course_lang = child.findViewById(R.id.course_language),
+                                price = child.findViewById(R.id.course_price);
+                        title.setText(course.getName());
+                        short_des.setText(course.getShortDescription());
+                        code.setText(String.format(": %s", course.getCourseCode()));
+                        level.setText(String.format(": %s", course.getLevel()));
+                        batch.setText(String.format(": %s", course.getBatch()));
+                        slot.setText(String.format(": %s", course.getSlot()));
+                        duration.setText(String.format(": %s", course.getDuration()));
+                        date_start.setText(String.format(": %s", course.getStartDate()));
+                        date_end.setText(String.format(": %s", course.getEndDate()));
+                        course_lang.setText(String.format(": %s", course.getCourseLanguage()));
+                        price.setText(String.format("%s", course.getPrice()));
+                        course_scroll.addView(child);
                     }
                 }
             }

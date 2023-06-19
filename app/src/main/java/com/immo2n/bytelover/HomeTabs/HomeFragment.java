@@ -21,10 +21,6 @@ import com.immo2n.bytelover.Slides;
 
 public class HomeFragment extends Fragment {
     private LottieAnimationView ide_ad_animation, home_image_1, home_image_2;
-    private Global global;
-    public HomeFragment(Global global_obj) {
-        global = global_obj;
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

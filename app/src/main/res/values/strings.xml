@@ -98,4 +98,17 @@
     <string name="failed_to_play_the_class_record">Failed to play the class record!</string>
     <string name="unknown_error_cap">UNKNOWN ERROR</string>
     <string name="exit">Exit</string>
+    <string name="fa_open_book"></string>
+    <string name="booking_open">Booking open</string>
+    <string name="fa_live"></string>
+    <string name="live_nocap">Live</string>
+    <string name="course_code">Course code</string>
+    <string name="level">Level</string>
+    <string name="batch">Batch</string>
+    <string name="slot">Slot</string>
+    <string name="duration">Duration</string>
+    <string name="end_date">End date</string>
+    <string name="course_language">Course language</string>
+    <string name="course_price">Course price</string>
+    <string name="colon_space">:</string>
 </resources>

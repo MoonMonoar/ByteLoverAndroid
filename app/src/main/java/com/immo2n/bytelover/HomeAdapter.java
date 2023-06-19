@@ -9,18 +9,16 @@ import com.immo2n.bytelover.HomeTabs.CourseFragment;
 import com.immo2n.bytelover.HomeTabs.HomeFragment;
 
 public class HomeAdapter extends FragmentStateAdapter {
-    private final Global global;
-    public HomeAdapter(@NonNull FragmentActivity fragmentActivity, Global global_obj) {
+    public HomeAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
-        global = global_obj;
     }
     @NonNull
     @Override
     public Fragment createFragment(int position) {
         if(position == 0) {
-            return new HomeFragment(global);
+            return new HomeFragment();
         }
-        return new CourseFragment(global);
+        return new CourseFragment();
     }
     @Override
     public int getItemCount() {
