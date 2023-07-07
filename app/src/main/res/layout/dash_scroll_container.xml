@@ -1,0 +1,19 @@
+<ScrollView
+    android:id="@+id/main_scroll"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grad3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableLayout
+        android:id="@+id/main_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/scroll_body"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            tools:ignore="UselessParent">
+        </RelativeLayout>
+    </TableLayout>
+</ScrollView>

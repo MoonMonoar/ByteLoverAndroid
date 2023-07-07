@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.immo2n.bytelover.CoreClasses.Net;
+
 import java.util.Map;
 import java.util.Objects;
 
@@ -130,13 +132,14 @@ public class Login extends AppCompatActivity {
                             login_reset(login);
                             return;
                         }
-                        Toast.makeText(Login.this, token, Toast.LENGTH_SHORT).show();
                         if(global.writeAsfile(token, "userToken.blt")) {
                             //Read check
                             String token_check = global.getUserToken();
                             if(null != token_check && !token_check.isEmpty()){
                                 Intent intent = new Intent(global.getContext(), Dashboard.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                        | Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();
                                 return;
@@ -148,11 +151,11 @@ public class Login extends AppCompatActivity {
                 }
             };
             request_token = global.getRandom();
-            Net net = new Net(loginHandler, global);
+            Net net = new Net(loginHandler, global, false);
             net.post(global.server+"/login.php", "user="+global.makeUrlSafe(user_in)+
                     "&pass="+global.makeUrlSafe(password_in)+"&hardwareId="+
                     global.makeUrlSafe(global.getAndroidId(this))
-                    +"&requestToken="+request_token);
+                    +"&requestToken="+request_token, null);
         });
         //Page behaviour
         login_sub_body.setOnClickListener(v -> release_all(user, password, imm));

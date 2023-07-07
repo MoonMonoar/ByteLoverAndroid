@@ -1,7 +1,10 @@
-package com.immo2n.bytelover;
+package com.immo2n.bytelover.CoreClasses;
 
 import android.os.Handler;
 import android.os.Message;
+
+import com.immo2n.bytelover.CrossProgramming.MD5;
+import com.immo2n.bytelover.Global;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,24 +15,43 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class Net {
+    NetCache netCache = NetCache.getInstance();
     private static Handler netHandler;
+    private final boolean net_cache_mode;
     private static WeakReference<Global> globalRef;
-    public Net(Handler handler, Global global_object) {
+    public Net(Handler handler, Global global_object, boolean cache) {
         netHandler = handler;
+        net_cache_mode = cache;
         globalRef = new WeakReference<>(global_object);
     }
     public void get(String url) {
         httpRequest(url, "GET");
     }
-
     //This is separated from http request method because it has to transfer payloads
-    public void post(String url, String payload){
+    public void post(String url, String payload, Integer request_identifier){
+        String cache_key = MD5.Generate(url+payload); // MASH URL WITH PAYLOAD DATA TO MAKE KEY
+        if(null == request_identifier){
+            request_identifier = 0;
+        }
+        if(net_cache_mode){
+            //Check cache --  return if exists
+            String data = netCache.getDataFromCache(cache_key);
+            if(null != data){
+                Message message = netHandler.obtainMessage();
+                message.obj = data;
+                message.what = request_identifier;
+                netHandler.sendMessage(message);
+                return;
+            }
+        }
         if(globalRef.get().netConnected()){
             Message message = netHandler.obtainMessage();
+            message.what = request_identifier;
             message.obj = "ERROR_NO_NET";
             netHandler.sendMessage(message);
             return;
         }
+        Integer finalRequest_identifier = request_identifier;
         new Thread(() -> {
             try {
                 URL obj = new URL(url);
@@ -50,17 +72,23 @@ public class Net {
                 }
                 in.close();
                 Message message = netHandler.obtainMessage();
+                message.what = finalRequest_identifier;
                 message.obj = response.toString();
                 netHandler.sendMessage(message);
+                if(net_cache_mode){
+                    netCache.storeDataInCache(cache_key, response.toString());
+                }
             }
             catch (Exception e){
                 Message message = netHandler.obtainMessage();
+                message.what = finalRequest_identifier;
                 message.obj = e.toString();
                 netHandler.sendMessage(message);
             }
         }).start();
     }
     public void data(String url, String token) {
+        //CACHE FREE - HOT RELOAD EVERY TIME
         new Thread(() -> {
             if(globalRef.get().netConnected()){
                 Message message = netHandler.obtainMessage();

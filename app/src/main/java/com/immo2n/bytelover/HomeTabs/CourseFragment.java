@@ -5,29 +5,25 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.gson.Gson;
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.gson.reflect.TypeToken;
-import com.immo2n.bytelover.Dashboard;
 import com.immo2n.bytelover.Global;
-import com.immo2n.bytelover.Login;
-import com.immo2n.bytelover.Net;
+import com.immo2n.bytelover.CoreClasses.Net;
 import com.immo2n.bytelover.Objects.Course;
 import com.immo2n.bytelover.R;
 import com.immo2n.bytelover.Server;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class CourseFragment extends Fragment {
@@ -35,6 +31,10 @@ public class CourseFragment extends Fragment {
     private RelativeLayout live_active, record_active, live_inactive, record_inactive;
     private Global global;
     private TableLayout course_scroll;
+    private ScrollView scrollView;
+    private RelativeLayout load;
+    private LottieAnimationView failed, loading, relax;
+    private TextView error_message;
     private LayoutInflater main_inflater;
     private ViewGroup main_view_group;
     private Server server;
@@ -52,6 +52,12 @@ public class CourseFragment extends Fragment {
         // Inflate the layout for this fragment
         View course_tab =  inflater.inflate(R.layout.home_tab_course, container, false);
         course_scroll = course_tab.findViewById(R.id.course_scroll);
+        scrollView = course_tab.findViewById(R.id.main_scroll);
+        load = course_tab.findViewById(R.id.load);
+        error_message = course_tab.findViewById(R.id.error_message);
+        loading = course_tab.findViewById(R.id.loading);
+        failed = course_tab.findViewById(R.id.failed);
+        relax = course_tab.findViewById(R.id.no_course);
         //Buttons
         live_active = course_tab.findViewById(R.id.live_active);
         live_inactive = course_tab.findViewById(R.id.live_inactive);
@@ -78,12 +84,15 @@ public class CourseFragment extends Fragment {
         record_active.setVisibility(View.VISIBLE);
     }
     private void load_data(boolean is_live){
-        Handler course_load_handler = new Handler(Looper.getMainLooper()) {
+        Handler course_load_handler = new Handler(Looper.getMainLooper()){
             @Override
             public void handleMessage(Message msg){
                 String data = msg.obj.toString();
                 if(data.equals("ERROR_NO_NET")){
-                    Toast.makeText(global.getContext(), "No internet!", Toast.LENGTH_SHORT).show();
+                    error_message.setText(R.string.no_internet);
+                    loading.setVisibility(View.GONE);
+                    failed.playAnimation();
+                    failed.setVisibility(View.VISIBLE);
                 }
                 else {
                     //Process the data
@@ -91,17 +100,25 @@ public class CourseFragment extends Fragment {
                     String status = (String)responseObject.get("status");
                     if(!tab_mode.equals(responseObject.get("type"))
                             || null == course_scroll
-                            || course_scroll.getVisibility() != View.VISIBLE
-                            || !course_scroll.isShown()){
+                            || load.getVisibility() != View.VISIBLE
+                            || !load.isShown()){
                             return;
                     }
                     //Errors
                     if(null == status || status.isEmpty() || status.equals("busy")){
-                        Toast.makeText(global.getContext(), "Sorry, server is busy! Try again.", Toast.LENGTH_SHORT).show();
+                        error_message.setText(R.string.sorry_server_is_busy_try_again);
+                        loading.setVisibility(View.GONE);
+                        loading.pauseAnimation();
+                        failed.playAnimation();
+                        failed.setVisibility(View.VISIBLE);
                         return;
                     }
                     if(status.equals("denied")){
-                        Toast.makeText(global.getContext(), "API rejection. Update app.", Toast.LENGTH_SHORT).show();
+                        error_message.setText(R.string.api_rejection_update_app);
+                        loading.pauseAnimation();
+                        loading.setVisibility(View.GONE);
+                        failed.playAnimation();
+                        failed.setVisibility(View.VISIBLE);
                         return;
                     }
 
@@ -113,7 +130,14 @@ public class CourseFragment extends Fragment {
                     }
                     if(courseList.size() == 0){
                         //No courses for now!
-
+                        failed.setVisibility(View.GONE);
+                        failed.pauseAnimation();
+                        loading.setVisibility(View.GONE);
+                        loading.pauseAnimation();
+                        relax.playAnimation();
+                        relax.setVisibility(View.VISIBLE);
+                        error_message.setText(R.string.no_courses_right_now);
+                        return;
                     }
                     //Cleanup
                     course_scroll.removeAllViews();
@@ -141,22 +165,41 @@ public class CourseFragment extends Fragment {
                         date_start.setText(String.format(": %s", course.getStartDate()));
                         date_end.setText(String.format(": %s", course.getEndDate()));
                         course_lang.setText(String.format(": %s", course.getCourseLanguage()));
-                        price.setText(String.format("%s", course.getPrice()));
+                        price.setText(String.format(" %s", course.getPrice()));
+                        if(!course.getStatus().equals("Live")){
+                            child.findViewById(R.id.live_tag).setVisibility(View.GONE);
+                            child.findViewById(R.id.rc_tag).setVisibility(View.VISIBLE);
+                        }
+                        child.findViewById(R.id.info).setOnClickListener(v -> {
+                            Intent open = new Intent(v.getContext(), com.immo2n.bytelover.Course.class);
+                            open.putStringArrayListExtra("data", course.getAllData());
+                            v.getContext().startActivity(open);
+                        });
                         course_scroll.addView(child);
                     }
+                    load.setVisibility(View.GONE);
+                    scrollView.setVisibility(View.VISIBLE);
                 }
             }
         };
-        Net net = new Net(course_load_handler, global);
-
+        Net net = new Net(course_load_handler, global, true);
+        scrollView.setVisibility(View.GONE);
+        error_message.setText("");
+        failed.setVisibility(View.GONE);
+        failed.pauseAnimation();
+        relax.setVisibility(View.GONE);
+        relax.pauseAnimation();
+        loading.playAnimation();
+        loading.setVisibility(View.VISIBLE);
+        load.setVisibility(View.VISIBLE);
         if(is_live){
             tab_mode = "Live";
             //Live data load
-            net.post(server.courses_data_link, "hardware="+global.makeUrlSafe(global.getAndroidId(global.getContext())));
+            net.post(server.courses_data_link, "hardware="+global.makeUrlSafe(global.getAndroidId(global.getContext())), null);
             return;
         }
         tab_mode = "Recorded";
         //Load recorded course data
-        net.post(server.courses_data_link, "type=recorded&hardware="+global.makeUrlSafe(global.getAndroidId(global.getContext())));
+        net.post(server.courses_data_link, "type=recorded&hardware="+server.getHardwareSignature(), null);
     }
 }

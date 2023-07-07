@@ -6,6 +6,7 @@
     <color name="lite">#2d1c11</color>
     <color name="white">#212121</color>
     <color name="black">#f1f1f1</color>
+    <color name="black_light">#DADADA</color>
     <color name="border_grey">#292929</color>
     <color name="dark">#dc6617</color>
     <color name="card_color">#3a3a3a</color>
@@ -25,4 +26,6 @@
     <color name="status_bar">#121212</color>
     <color name="card_grad1">#442C1C</color>
     <color name="card_grad2">#333943</color>
+
+    <color name="main_cards">#f1f1f1</color>
 </resources>

@@ -53,71 +53,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
         <LinearLayout
-            android:padding="15dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/card_background"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:padding="10dp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessParent">
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/ide_ad_title"
-                    android:textColor="@color/main"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
-                    android:fontFamily="@font/ubuntu"
-                    android:text="@string/programming_ide"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/ide_ad_message"
-                    android:paddingEnd="5dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_below="@id/ide_ad_title"
-                    android:textColor="@color/main"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/ubuntu"
-                    android:text="@string/ide_ad_message_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="RtlSymmetry" />
-                <Button
-                    android:background="@drawable/button_background"
-                    android:id="@+id/open_ide"
-                    android:textAllCaps="false"
-                    android:layout_marginTop="15dp"
-                    android:layout_below="@id/ide_ad_message"
-                    android:fontFamily="@font/ubuntu"
-                    android:text="@string/open_ide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="150dp"
-                android:layout_height="match_parent">
-                <com.airbnb.lottie.LottieAnimationView
-                    android:scaleX="1.2"
-                    android:scaleY="1.2"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/ide_ad_animation"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    app:lottie_autoPlay="true"
-                    app:lottie_fileName="ideAd.json"
-                    app:lottie_loop="true"
-                    tools:ignore="MissingConstraints"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -167,6 +104,7 @@
                 android:layout_width="48dp"
                 android:layout_height="match_parent"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_margin="15dp"
             android:layout_width="match_parent"

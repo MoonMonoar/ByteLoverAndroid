@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,7 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ByteLover"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".Routine"
+            android:exported="false" />
+        <activity
+            android:name=".Notifications"
+            android:exported="false" />
+        <activity
+            android:name=".OfflineClasses"
+            android:exported="false" />
+        <activity
+            android:name=".Course"
+            android:exported="false" />
         <activity
             android:name=".Video"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -35,11 +47,6 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".Ide"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
             android:name=".Dashboard"
             android:exported="false"
             android:screenOrientation="portrait"
@@ -48,7 +55,7 @@
         <service
             android:name=".Push"
             android:exported="false"
-            android:stopWithTask="false" >
+            android:stopWithTask="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -72,7 +79,7 @@
             android:configChanges="uiMode"
             android:exported="true"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" >
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

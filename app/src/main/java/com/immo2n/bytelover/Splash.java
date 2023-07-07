@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.immo2n.bytelover.CoreClasses.Net;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -82,7 +83,7 @@ public class Splash extends AppCompatActivity {
                 }
             }
         };
-        Net net = new Net(starterHandler, global);
+        Net net = new Net(starterHandler, global, false);
         net.get(global.server + "/?newAndroidClient="+
                 global.makeUrlSafe(global.getAndroidId(this))+ "&pushToken=" +
                 global.makeUrlSafe(Push.getToken(this)));
@@ -105,7 +106,6 @@ public class Splash extends AppCompatActivity {
     }
     private void success_net(String data){
         try {
-            Log.d("SPLASH-RESPONSE", data);
             Map<String, Object> responseObject = global.jsonMap(data);
             String signature = (String)responseObject.get("signature");
             if(null == signature || !signature.equals(global.getAndroidId(this))){
@@ -153,7 +153,6 @@ public class Splash extends AppCompatActivity {
             login();
         }
         catch (Exception e){
-            Log.d("SPLASH-ERROR", e.toString());
             invalid_response = true;
             //To avoid connected toast
             flag_tried_net = false;

@@ -17,8 +17,25 @@ public class Server {
     public final String server = "https://api.bytelover.com/android";
 
     //DATA LINKS
-    public String courses_data_link = server+"/data/courses.php";
+    public String courses_data_link = server+"/data/courses.php",
+                  user_photo_end_point = "https://bytelover.com/img/users/",
+                  today_class_link = server+"/data/frag_todays_classes.php",
+                  user_data_link = server+"/data/user.php";
     public String getCourses_data_link() {
         return courses_data_link;
+    }
+    public String getUser_data_link() {
+        return user_data_link;
+    }
+    public String getHardwareSignature(){
+        return global.makeUrlSafe(global.getAndroidId(global.getContext()));
+    }
+
+    public String getToday_class_link() {
+        return today_class_link;
+    }
+
+    public String getUser_photo_end_point() {
+        return user_photo_end_point;
     }
 }

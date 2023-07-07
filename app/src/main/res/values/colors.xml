@@ -13,6 +13,7 @@
     <color name="lite">#fbe7d9</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="black_light">#454545</color>
     <color name="border_grey">#f1f1f1</color>
     <color name="dark">#dc6617</color>
     <color name="card_color">#ffe5d2</color>
@@ -33,6 +34,9 @@
     <color name="card_grad1">#F8DECD</color>
     <color name="card_grad2">#C8DAF4</color>
 
+    <color name="main_cards">#FF7F27</color>
+
+
     <color name="course_features_two">#ff735d</color>
     <color name="course_features_four">#45945C</color>
     <color name="course_features_three">#5c408f</color>
@@ -40,6 +44,7 @@
     <color name="feature_card_two">#8067AF</color>
     <color name="feature_card_three">#D8897D</color>
     <color name="feature_card_four">#637680</color>
+
 
     <color name="grad_cap">#C8DAF4</color>
     <color name="light_blue_600">#FF039BE5</color>

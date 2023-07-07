@@ -1,10 +1,10 @@
 package com.immo2n.bytelover.Objects;
 
-public class Course {
+import java.util.ArrayList;
 
+public class Course {
     private String id, name, price, actual_price, level, batch, slot, course_code, short_description, main_description,
             duration, start_date, end_date, record_expiry_months, course_language, teacher_id, status;
-
     public Course(String id, String name, String price, String actual_price, String level, String batch,
                   String slot, String course_code, String short_description, String main_description,
                   String duration, String start_date, String end_date, String record_expiry_months,
@@ -27,7 +27,28 @@ public class Course {
         this.teacher_id = teacher_id;
         this.status = status;
     }
-
+    public ArrayList<String> getAllData() {
+        ArrayList<String> allData = new ArrayList<>();
+        //Add to data array
+        allData.add(id);
+        allData.add(name);
+        allData.add(price);
+        allData.add(actual_price);
+        allData.add(level);
+        allData.add(batch);
+        allData.add(slot);
+        allData.add(course_code);
+        allData.add(short_description);
+        allData.add(main_description);
+        allData.add(duration);
+        allData.add(start_date);
+        allData.add(end_date);
+        allData.add(record_expiry_months);
+        allData.add(course_language);
+        allData.add(teacher_id);
+        allData.add(status);
+        return allData;
+    }
     public String getId() {
         return id;
     }
