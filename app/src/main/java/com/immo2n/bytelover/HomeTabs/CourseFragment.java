@@ -143,7 +143,7 @@ public class CourseFragment extends Fragment {
                     course_scroll.removeAllViews();
                     for(Course course: courseList){
                         //Loop of every course
-                        View child = main_inflater.inflate(R.layout.course_child, main_view_group);
+                        View child = main_inflater.inflate(R.layout.frag_course_child, main_view_group);
                         TextView title = child.findViewById(R.id.course_title),
                                 short_des = child.findViewById(R.id.course_short_description),
                                 code = child.findViewById(R.id.course_code),

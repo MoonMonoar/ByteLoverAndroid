@@ -144,4 +144,19 @@
     <string name="user_loading">...</string>
     <string name="loading">Loading...</string>
     <string name="fa_home"></string>
+    <string name="study_materials">Study materials</string>
+    <string name="class_link_will_be_available_10_minutes_before_time">Class link will be available 10 minutes before time.</string>
+    <string name="will_occur_on_time">Will occur on time</string>
+    <string name="no_study_materials_provided_yet">No study materials provided yet!</string>
+    <string name="fa_clock"></string>
+    <string name="fa_stopwatch"></string>
+    <string name="fa_user_add"></string>
+    <string name="join_now">Join Now</string>
+    <string name="watch_class">Watch Class</string>
+    <string name="video_info">Video info</string>
+    <string name="close">Close</string>
+    <string name="class_unknown_class">Class: Unknown class</string>
+    <string name="fa_class"></string>
+    <string name="course_unknown">Course: Unknown</string>
+    <string name="date_unknown">Date: Unknown</string>
 </resources>

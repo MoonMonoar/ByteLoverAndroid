@@ -20,6 +20,7 @@ public class Server {
     public String courses_data_link = server+"/data/courses.php",
                   user_photo_end_point = "https://bytelover.com/img/users/",
                   today_class_link = server+"/data/frag_todays_classes.php",
+                  class_video_link = server+"/video/",
                   user_data_link = server+"/data/user.php";
     public String getCourses_data_link() {
         return courses_data_link;

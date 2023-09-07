@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
@@ -81,6 +82,15 @@ public class Video extends AppCompatActivity {
             }
         }
 
+        //THE INFO MENU
+        findViewById(R.id.info).setOnClickListener(v-> {
+            Dialog info_dialogue = global.makeDialogue(R.layout.dialogue_video_info, R.drawable.dialogue_background);
+            info_dialogue.setCancelable(true);
+            info_dialogue.getWindow().findViewById(R.id.exit).setOnClickListener(v2 -> {
+
+            });
+        });
+
         Uri uri = Uri.parse(videoUrl);
         String fileExtension = MimeTypeMap.getFileExtensionFromUrl(videoUrl);
         String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(fileExtension);
@@ -134,6 +144,7 @@ public class Video extends AppCompatActivity {
             @Override
             public void onPlayerError(@NonNull PlaybackException error) {
                 Player.Listener.super.onPlayerError(error);
+                Log.d("MOON-LINK", videoUrl);
                 error_reason.setText(error.getMessage());
                 failure_dialogue.show();
                 show();

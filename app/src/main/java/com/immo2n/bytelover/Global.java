@@ -319,4 +319,11 @@ public class Global {
     public Gson getGson() {
         return gson;
     }
+    public String getExtension(String file_name){
+        int dotIndex = file_name.lastIndexOf(".");
+        if (dotIndex > 0 && dotIndex < file_name.length() - 1) {
+             return file_name.substring(dotIndex + 1).toUpperCase(); // Convert to all caps
+        }
+        return "???";
+    }
 }

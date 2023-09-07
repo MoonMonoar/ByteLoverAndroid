@@ -9,6 +9,7 @@ public class ClassObj {
     private String video_link;
     private String start_date;
     private String start_time;
+    private String duration;
     private String delayed_date;
     private String status;
     private String course_name;
@@ -50,6 +51,14 @@ public class ClassObj {
         public void setLink(String link) {
             this.link = link;
         }
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
     public int getId() {

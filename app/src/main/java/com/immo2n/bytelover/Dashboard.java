@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.immo2n.bytelover.Objects.ClassObj;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -143,6 +148,30 @@ public class Dashboard extends AppCompatActivity {
                 | Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(home);
+    }
+
+    public static void play_class_video(ClassObj classObj, Context context){
+        Intent video = new Intent(context, Video.class);
+        video.putExtra("link", classObj.getVideo_link());
+        video.putExtra("class", classObj.getTitle());
+        video.putExtra("date", (null != classObj.getDelayed_date())?classObj.getDelayed_date():classObj.getStart_date());
+        video.putExtra("course", classObj.getCourse_name());
+        context.startActivity(video);
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    public static void openGoogleMeet(String link, Context context) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(link));
+        intent.setPackage("com.google.android.apps.meetings");
+        PackageManager packageManager = context.getPackageManager();
+        if (intent.resolveActivity(packageManager) != null) {
+            context.startActivity(intent);
+        } else {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW);
+            webIntent.setData(Uri.parse(link));
+            context.startActivity(webIntent);
+        }
     }
 
     @Override

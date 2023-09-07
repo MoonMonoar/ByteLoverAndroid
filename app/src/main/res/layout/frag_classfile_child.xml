@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/class_file"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:background="@drawable/class_file_back">
+    <TextView
+        android:textSize="17sp"
+        android:id="@+id/file_ext"
+        android:singleLine="true"
+        android:ellipsize="middle"
+        android:background="@color/file_ext"
+        android:fontFamily="@font/ubuntu"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:layout_marginStart="10dp"
+        android:id="@+id/file_name"
+        android:textSize="17sp"
+        android:fontFamily="@font/ubuntu"
+        android:textColor="@color/white"
+        android:gravity="center|left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="RtlHardcoded"/>
+</LinearLayout>

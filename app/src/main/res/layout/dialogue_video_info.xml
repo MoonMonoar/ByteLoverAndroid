@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:orientation="horizontal">
+
+        <TextView
+            android:fontFamily="@font/ubuntu"
+            android:layout_marginEnd="80dp"
+            android:maxWidth="300dp"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:text="@string/video_info"
+            android:textColor="@color/main"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_awesome_regular"
+            android:padding="10dp"
+            android:text="@string/fa_class" />
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center|left"
+            android:fontFamily="@font/ubuntu"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/class_name"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/class_unknown_class"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_awesome_regular"
+            android:padding="10dp"
+            android:text="@string/fa_calendar"/>
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center|left"
+            android:fontFamily="@font/ubuntu"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/class_date"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/date_unknown"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_awesome_regular"
+            android:padding="10dp"
+            android:text="@string/fa_books" />
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center|left"
+            android:fontFamily="@font/ubuntu"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/course_name"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/course_unknown"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_awesome_regular"
+            android:padding="10dp"
+            android:text="@string/fa_books" />
+        <TextView
+            android:textSize="17sp"
+            android:gravity="center|left"
+            android:fontFamily="@font/ubuntu"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/course_name"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/course_unknown"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="right"
+        android:fontFamily="@font/ubuntu"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/close"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/main"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:text="@string/close"
+        tools:ignore="RtlHardcoded" />
+</LinearLayout>

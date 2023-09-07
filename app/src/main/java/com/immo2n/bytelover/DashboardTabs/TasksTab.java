@@ -1,7 +1,6 @@
 package com.immo2n.bytelover.DashboardTabs;
 
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ public class TasksTab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Views
-        View tab =  inflater.inflate(R.layout.dash_scroll_container, container, false);
+        View tab =  inflater.inflate(R.layout.dash_tab_main, container, false);
         View load =  inflater.inflate(R.layout.dash_comp_load, container, false);
 
         //Components

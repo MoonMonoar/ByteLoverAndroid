@@ -6,6 +6,8 @@
     <color name="main_robust">#FF7F27</color>
     <color name="black_robust">#000000</color>
     <color name="price">#1bd41b</color>
+    <color name="file_back">#3992e3</color>
+    <color name="file_ext">#1f6489</color>
 
     <!-- Light -->
     <color name="main">#FF7F27</color>
